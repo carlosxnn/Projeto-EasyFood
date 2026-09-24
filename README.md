@@ -1,70 +1,75 @@
-# EasyFood 🍔
+# 🍽️ EasyFood
 
-![Static Badge](https://img.shields.io/badge/STATUS-FINALIZADO-green)
+O EasyFood é um protótipo de sistema de delivery, desenvolvido como projeto acadêmico para a disciplina de Engenharia de Software do curso de Engenharia da Computação. O objetivo principal foi aplicar conceitos de desenvolvimento backend, arquitetura de software e boas práticas na construção de uma API RESTful robusta e funcional.
 
-Um projeto de sistema de delivery de comida, desenvolvido como parte de um estudo prático de desenvolvimento backend com Node.js. O sistema conta com uma API RESTful para gerenciar restaurantes e autenticação de usuários, e um frontend simples para visualização.
+## 📋 Sobre o Projeto
 
-## 🚀 Tecnologias Utilizadas
+O projeto simula o núcleo de um serviço de delivery, onde é possível gerenciar restaurantes e usuários. A aplicação foi estruturada para ser escalável e manutenível, utilizando uma arquitetura em camadas que separa claramente as responsabilidades, desde a requisição HTTP até a persistência dos dados.
 
-O projeto foi construído utilizando as seguintes tecnologias:
+## 🚀 Funcionalidades Implementadas
 
-- **Backend:**
-  - [Node.js](https://nodejs.org/en/)
-  - [Express.js](https://expressjs.com/pt-br/)
-  - [Prisma](https://www.prisma.io/)
-  - [JSON Web Tokens (JWT)](https://jwt.io/)
-  - [SQLite](https://www.sqlite.org/index.html)
+O sistema atualmente suporta as seguintes funcionalidades:
 
-- **Frontend:**
-  - HTML5
-  - CSS3
-  - JavaScript
-
-## ✨ Principais Funcionalidades
-
-- **Autenticação de Usuários:**
-  - Registro de novos usuários.
-  - Login com geração de token JWT.
-  - Rota protegida para verificar o usuário logado.
+- **Gestão de Usuários e Autenticação:**
+  - Cadastro (registro) de novos usuários no sistema.
+  - Autenticação de usuários via login, gerando um token de acesso.
+  - Utilização de JSON Web Tokens (JWT) para controle de sessão e autorização.
 - **Gestão de Restaurantes:**
-  - Listagem dos restaurantes cadastrados no banco de dados.
+  - Listagem dos restaurantes cadastrados.
+- **Infraestrutura e Persistência:**
+  - Persistência de dados utilizando o ORM Prisma.
+  - Banco de dados configurado para PostgreSQL.
+  - Frontend simples (HTML, CSS, JS) integrado para consumir a API e exibir os restaurantes.
 
-## ⚙️ Como Executar o Projeto
+## 🏗️ Arquitetura
 
-Para executar o projeto localmente, siga os passos abaixo:
+O projeto adota uma arquitetura em camadas, garantindo o desacoplamento e a organização do código-fonte. O fluxo de uma requisição segue o seguinte padrão:
 
-1. **Clone o repositório:**
-   ```bash
-   git clone https://github.com/carlosxnn/Projeto-EasyFood.git
-   cd Projeto-EasyFood
-   ```
+```
+Frontend (Cliente)
+       ↓
+Express (Servidor Web e Roteamento)
+       ↓
+Routes (Definição dos Endpoints da API)
+       ↓
+Controllers (Orquestração da Requisição)
+       ↓
+Services (Lógica de Negócio)
+       ↓
+Prisma (ORM - Camada de Acesso a Dados)
+       ↓
+PostgreSQL (Banco de Dados)
+```
 
-2. **Instale as dependências:**
-   ```bash
-   npm install
-   ```
+- **Controllers:** Responsáveis por receber as requisições HTTP, validar os dados de entrada e orquestrar o fluxo, delegando a lógica de negócio para os serviços.
+- **Services:** Contêm a lógica de negócio da aplicação. São responsáveis por executar as regras e operações necessárias para atender a uma solicitação.
+- **Prisma (ORM):** Abstrai o acesso ao banco de dados, permitindo que a aplicação interaja com o PostgreSQL de forma segura e tipada, sem a necessidade de escrever SQL manualmente.
 
-3. **Configure o banco de dados com o Prisma:**
-   ```bash
-   npx prisma migrate dev --name init
-   ```
+## 📁 Estrutura do Projeto
 
-4. **Inicie o servidor:**
-   ```bash
-   npm start
-   ```
-   O servidor estará disponível em `http://localhost:3000`.
+A estrutura de diretórios foi organizada para refletir a arquitetura em camadas e facilitar a manutenção.
 
-## Endpoints da API
-
-A API possui as seguintes rotas:
-
-| Método | Rota               | Descrição                               | Autenticação |
-|--------|--------------------|-------------------------------------------|--------------|
-| `POST` | `/auth/register`   | Registra um novo usuário.                 | Nenhuma      |
-| `POST` | `/auth/login`      | Autentica um usuário e retorna um token.  | Nenhuma      |
-| `GET`  | `/auth/me`         | Retorna os dados do usuário autenticado.  | Obrigatória  |
-| `GET`  | `/restaurants`     | Lista todos os restaurantes.              | Nenhuma      |
-
----
-Desenvolvido por Carlos.
+```text
+/
+├── prisma/
+│   ├── dev.db
+│   ├── migrations/
+│   └── schema.prisma
+├── public/
+│   ├── index.html
+│   ├── script.js
+│   └── style.css
+├── src/
+│   ├── app.js
+│   ├── database/
+│   │   └── prisma.js
+│   └── routes/
+│       ├── auth.js
+│       └── restaurants.js
+├── .env
+├── .gitignore
+├── package-lock.json
+├── package.json
+├── README.md
+└── server.js
+```
