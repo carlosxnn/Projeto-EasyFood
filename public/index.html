@@ -3,31 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EasyFood</title>
+    <title>EasyFood - Gestão de Restaurantes</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>EasyFood</h1>
-    </header>
-    <main>
-        <section id="form-section">
-            <h2>Adicionar Novo Restaurante</h2>
-            <form id="restaurant-form">
-                <input type="text" id="jwt-token" placeholder="Cole seu Token JWT aqui" required>
-                <input type="text" id="name" placeholder="Nome do Restaurante" required>
-                <input type="text" id="category" placeholder="Categoria" required>
-                <input type="number" id="rating" placeholder="Avaliação (1-5)" step="0.1" min="1" max="5" required>
-                <button type="submit">Adicionar Restaurante</button>
-            </form>
-        </section>
-        <section id="list-section">
-            <h2>Restaurantes</h2>
-            <div id="restaurant-list">
-                <!-- Restaurantes serão inseridos aqui via JavaScript -->
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1>EasyFood</h1>
+                <p>Gestão Simplificada de Restaurantes</p>
             </div>
-        </section>
-    </main>
+        </header>
+
+        <main>
+            <div class="content-wrapper">
+                <section id="form-section" class="card">
+                    <h2>Adicionar Novo Restaurante</h2>
+                    <form id="restaurant-form">
+                        <div class="input-group">
+                            <label for="jwt-token">Token de Acesso (JWT)</label>
+                            <input type="password" id="jwt-token" placeholder="Cole seu Token JWT aqui" required>
+                            <p class="input-helper">Necessário para cadastrar restaurantes.</p>
+                        </div>
+                        <div class="input-group">
+                            <label for="name">Nome do Restaurante</label>
+                            <input type="text" id="name" placeholder="Ex: Sabor Divino" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="category">Categoria</label>
+                            <input type="text" id="category" placeholder="Ex: Culinária Brasileira" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="rating">Avaliação</label>
+                            <input type="number" id="rating" placeholder="Avaliação de 1 a 5" step="0.1" min="1" max="5" required>
+                        </div>
+                        <button type="submit" class="btn-primary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                            <span>Adicionar Restaurante</span>
+                        </button>
+                    </form>
+                    <div id="form-message"></div>
+                </section>
+
+                <section id="list-section">
+                    <h2>Nossos Restaurantes</h2>
+                    <div id="restaurant-list">
+                        <!-- Restaurantes serão inseridos aqui via JavaScript -->
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 EasyFood. Todos os direitos reservados.</p>
+        </footer>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
