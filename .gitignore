@@ -1,0 +1,13 @@
+# Dependencies
+/node_modules
+
+# Environment variables
+.env
+
+# Log files
+*.log
+
+# Prisma
+*.db
+*.db-journal
+/prisma/client

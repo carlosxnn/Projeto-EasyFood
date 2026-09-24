@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EasyFood</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>EasyFood</h1>
+    </header>
+    <main>
+        <section id="form-section">
+            <h2>Adicionar Novo Restaurante</h2>
+            <form id="restaurant-form">
+                <input type="text" id="jwt-token" placeholder="Cole seu Token JWT aqui" required>
+                <input type="text" id="name" placeholder="Nome do Restaurante" required>
+                <input type="text" id="category" placeholder="Categoria" required>
+                <input type="number" id="rating" placeholder="Avaliação (1-5)" step="0.1" min="1" max="5" required>
+                <button type="submit">Adicionar Restaurante</button>
+            </form>
+        </section>
+        <section id="list-section">
+            <h2>Restaurantes</h2>
+            <div id="restaurant-list">
+                <!-- Restaurantes serão inseridos aqui via JavaScript -->
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
